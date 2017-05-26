@@ -25,6 +25,25 @@ public class Account {
         this.customerPhoneNumber = customerPhoneNumber;
     }
 
+    public Account(String customerName, String customerEmailAddress, String customerPhoneNumber) {
+        this("99999", 100.55, customerName, customerEmailAddress, customerPhoneNumber);
+    }
+
+    public void deposit(double depositAmount) {
+        this.balance += depositAmount;
+        System.out.println("Deposit of " + depositAmount + " made. New balance is " + this.balance);
+        System.out.println(depositAmount + " dollars added to account. New balance is " + this.balance);
+    }
+
+    public void withdraw(double withdrawalAmount) {
+        if ((this.balance - withdrawalAmount) < 0) {
+            System.out.println("Only " + this.balance + " available. Withdrawal not processed");
+        } else {
+            this.balance -= withdrawalAmount;
+            System.out.println("Withdrawal of " + withdrawalAmount + " processed. Remaining balance = " + this.balance);
+        }
+    }
+
     public String getNumber() {
         return number;
     }
@@ -63,20 +82,5 @@ public class Account {
 
     public void setCustomerPhoneNumber(String customerPhoneNumber) {
         this.customerPhoneNumber = customerPhoneNumber;
-    }
-
-    public void deposit(double depositAmount) {
-        this.balance += depositAmount;
-        System.out.println("Deposit of " + depositAmount + " made. New balance is " + this.balance);
-        System.out.println(depositAmount + " dollars added to account. New balance is " + this.balance);
-    }
-
-    public void withdraw(double withdrawalAmount) {
-        if ((this.balance - withdrawalAmount) <= 0) {
-            System.out.println("Only " + this.balance + " available. Withdrawal not processed");
-        } else {
-            this.balance -= withdrawalAmount;
-            System.out.println("Withdrawal of " + withdrawalAmount + " processed. Remaining balance = " + this.balance);
-        }
     }
 }
