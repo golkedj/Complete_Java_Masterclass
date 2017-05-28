@@ -4,19 +4,41 @@ package com.davidgolke;
  * Created by David Golke on 5/28/2017.
  */
 public class Bed {
-    private String brand;
-    private int firmness;
+    private String style;
+    private int pillows;
+    private int height;
+    private int sheets;
+    private int quilt;
 
-    public Bed(String brand, int firmness) {
-        this.brand = brand;
-        this.firmness = firmness;
+    public Bed(String style, int pillows, int height, int sheets, int quilt) {
+        this.style = style;
+        this.pillows = pillows;
+        this.height = height;
+        this.sheets = sheets;
+        this.quilt = quilt;
     }
 
-    public String getBrand() {
-        return brand;
+    public void make() {
+        System.out.println("Bed -> Making");
     }
 
-    public int getFirmness() {
-        return firmness;
+    public String getStyle() {
+        return style;
+    }
+
+    public int getPillows() {
+        return pillows;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getSheets() {
+        return sheets;
+    }
+
+    public int getQuilt() {
+        return quilt;
     }
 }

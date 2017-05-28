@@ -4,21 +4,29 @@ package com.davidgolke;
  * Created by David Golke on 5/28/2017.
  */
 public class Lamp {
-    private String color;
-    private int bulbs;
-    private boolean on;
+    private String style;
+    private boolean battery;
+    private int globRating;
 
-    public Lamp(String color, int bulbs, boolean on) {
-        this.color = color;
-        this.bulbs = bulbs;
-        this.on = on;
+    public Lamp(String style, boolean battery, int globRating) {
+        this.style = style;
+        this.battery = battery;
+        this.globRating = globRating;
     }
 
-    public void turnOnLamp() {
-        on = true;
+    public void turnOn() {
+        System.out.println("Lamp -> Turning on");
     }
 
-    public void turnOffLamp() {
-        on = false;
+    public String getStyle() {
+        return style;
+    }
+
+    public boolean isBattery() {
+        return battery;
+    }
+
+    public int getGlobRating() {
+        return globRating;
     }
 }

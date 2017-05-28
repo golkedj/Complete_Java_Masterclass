@@ -4,12 +4,32 @@ package com.davidgolke;
  * Created by David Golke on 5/28/2017.
  */
 public class Bedroom {
-    private Bed bed = new Bed("Serta", 50);
-    private Ceiling ceiling = new Ceiling(12);
-    private Lamp lamp = new Lamp("blue", 2, false);
-    private Wall frontWall = new Wall(12, 20, "white");
-    private Wall backWall = new Wall(12, 20, "white");
-    private Wall leftWall = new Wall(12, 20, "white");
-    private Wall rightWall = new Wall(12, 20, "white");
-    
+    private String name;
+    private Wall wall1;
+    private Wall wall2;
+    private Wall wall3;
+    private Wall wall4;
+    private Ceiling ceiling;
+    private Bed bed;
+    private Lamp lamp;
+
+    public Bedroom(String name, Wall wall1, Wall wall2, Wall wall3, Wall wall4, Ceiling ceiling, Bed bed, Lamp lamp) {
+        this.name = name;
+        this.wall1 = wall1;
+        this.wall2 = wall2;
+        this.wall3 = wall3;
+        this.wall4 = wall4;
+        this.ceiling = ceiling;
+        this.bed = bed;
+        this.lamp = lamp;
+    }
+
+    public Lamp getLamp() {
+        return lamp;
+    }
+
+    public void makeBed() {
+        System.out.println("Bedroom -> Making bed");
+        bed.make();
+    }
 }
