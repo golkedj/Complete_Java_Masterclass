@@ -6,41 +6,41 @@ package com.davidgolke;
 public class Printer {
     private int tonerLevel;
     private int pagesPrinted;
-    private boolean duplexPrinter;
+    private boolean duplex;
 
-    public Printer(int tonerLevel) {
-        this(tonerLevel, 0, false);
-    }
-
-    public Printer(int tonerLevel, boolean duplexPrinter) {
-        this(tonerLevel, 0, duplexPrinter);
-    }
-
-    public Printer(int tonerLevel, int pagesPrinted, boolean duplexPrinter) {
-        if (tonerLevel <= 100) {
+    public Printer(int tonerLevel, boolean duplex) {
+        if ((tonerLevel > -1) && (tonerLevel <= 100)) {
             this.tonerLevel = tonerLevel;
         } else {
-            this.tonerLevel = 100;
+            this.tonerLevel = -1;
         }
-
-        this.pagesPrinted = pagesPrinted;
-        this.duplexPrinter = duplexPrinter;
+        this.duplex = duplex;
+        this.pagesPrinted = 0;
     }
 
-    public void fillToner(int tonerValue) {
-        tonerLevel += tonerValue;
-        if (tonerLevel > 100) {
-            tonerLevel = 100;
+    public int addToner(int tonerAmount) {
+        if ((tonerAmount > 0) && (tonerAmount <= 100)) {
+            if ((this.tonerLevel + tonerAmount) > 100) {
+                return -1;
+            }
+            this.tonerLevel += tonerAmount;
+            return this.tonerLevel;
+        } else {
+            return -1;
         }
-        System.out.println("Filling toner. New toner level is " + tonerLevel);
     }
 
-    public void printPage() {
-        pagesPrinted++;
-
-        if (duplexPrinter) {
-            System.out.println("Printer is duplex printer.");
+    public int printPages(int pages) {
+        int pagesToPrint = pages;
+        if (this.duplex) {
+            pagesToPrint /= 2;
+            System.out.println("Printing in duplex mode");
         }
-        System.out.println("Printed page " + pagesPrinted + " successfully");
+        this.pagesPrinted += pagesToPrint;
+        return pagesToPrint;
+    }
+
+    public int getPagesPrinted() {
+        return pagesPrinted;
     }
 }
