@@ -1,113 +1,99 @@
 package com.davidgolke;
 
 class Car {
-    private String name;
     private boolean engine;
     private int cylinders;
+    private String name;
     private int wheels;
 
-    public Car(String name, int cylinders) {
-        this.name = name;
-        this.engine = true;
+    public Car(int cylinders, String name) {
         this.cylinders = cylinders;
+        this.name = name;
         this.wheels = 4;
-    }
-
-    public void startEngine() {
-        System.out.println("Generic engine being started");
-    }
-
-    public void accelerate() {
-        System.out.println("Generic car accelerating");
-    }
-
-    public void brake() {
-        System.out.println("Generic car braking");
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public boolean isEngine() {
-        return engine;
+        this.engine = true;
     }
 
     public int getCylinders() {
         return cylinders;
     }
 
-    public int getWheels() {
-        return wheels;
+    public String getName() {
+        return name;
+    }
+
+    public String startEngine() {
+        return "Car -> startEngine()";
+    }
+
+    public String accelerate() {
+        return "Car -> accelerate()";
+    }
+
+    public String brake() {
+        return "Car -> brake()";
     }
 }
 
-class Ferrari extends Car {
-    public Ferrari() {
-        super("Ferrari", 6);
+class Mitsubishi extends Car {
+    public Mitsubishi(int cylinders, String name) {
+        super(cylinders, name);
     }
 
     @Override
-    public void startEngine() {
-        System.out.println("Ferrari engine started");
+    public String startEngine() {
+        return "Mitsubishi -> startEngine()";
     }
 
     @Override
-    public void accelerate() {
-        System.out.println("Ferrari accelerating");
+    public String accelerate() {
+        return "Mitsubishi -> accelerate()";
     }
 
     @Override
-    public void brake() {
-        System.out.println("Ferrari breaking");
+    public String brake() {
+        return "Mitsubishi -> brake()";
     }
 }
 
-class Porsche extends Car {
-    public Porsche() {
-        super("Porsche", 4);
+class Holden extends Car {
+    public Holden(int cylinders, String name) {
+        super(cylinders, name);
     }
 
     @Override
-    public void startEngine() {
-        System.out.println("Porsche engine started");
+    public String startEngine() {
+        return getClass().getSimpleName() + " -> startEngine()";
     }
 
     @Override
-    public void accelerate() {
-        System.out.println("Porsche accelerating");
+    public String accelerate() {
+        return getClass().getSimpleName() + " -> accelerate()";
     }
 
     @Override
-    public void brake() {
-        System.out.println("Porsche breaking");
+    public String brake() {
+        return getClass().getSimpleName() + " -> brake()";
     }
 }
 
-class Mustang extends Car {
-    public Mustang() {
-        super("Mustang", 5);
+class Ford extends Car {
+    public Ford(int cylinders, String name) {
+        super(cylinders, name);
     }
 
     @Override
-    public void startEngine() {
-        System.out.println("Mustang engine started");
+    public String startEngine() {
+        return "Ford -> startEngine()";
     }
 
     @Override
-    public void accelerate() {
-        System.out.println("Mustang accelerating");
+    public String accelerate() {
+        return "Ford -> accelerate()";
     }
 
     @Override
-    public void brake() {
-        System.out.println("Mustang breaking");
-    }
-}
-
-class Common extends Car {
-    public Common() {
-        super("Some car", 4);
+    public String brake() {
+        return "Ford -> brake()";
     }
 }
 
@@ -129,29 +115,26 @@ public class Main {
         // Now create 3 sub classes for your favorite vehicles.
         // Override the appropriate methods to demonstrate polymorphism in use.
         // put all classes in the one java file (this one).
-        for (int i = 1; i < 11; i++) {
-            Car car = randomCar();
-            car.startEngine();
-            car.accelerate();
-            car.brake();
-            System.out.println();
-        }
+        Car car = new Car(8, "Base car");
+        System.out.println(car.startEngine());
+        System.out.println(car.accelerate());
+        System.out.println(car.brake());
+
+        Mitsubishi mitsubishi = new Mitsubishi(6, "Outlander VRW 4WD");
+        System.out.println(mitsubishi.startEngine());
+        System.out.println(mitsubishi.accelerate());
+        System.out.println(mitsubishi.brake());
+
+        Ford ford = new Ford(6, "Ford Falcon");
+        System.out.println(ford.startEngine());
+        System.out.println(ford.accelerate());
+        System.out.println(ford.brake());
+
+        Holden holden = new Holden(6, "Holden Commodore");
+        System.out.println(holden.startEngine());
+        System.out.println(holden.accelerate());
+        System.out.println(holden.brake());
     }
 
-    public static Car randomCar() {
-        int randomNumber = (int) (Math.random() * 4) + 1;
-        System.out.println("Random number generated was " + randomNumber);
-        switch(randomNumber) {
-            case 1:
-                return new Ferrari();
-            case 2:
-                return new Porsche();
-            case 3:
-                return new Mustang();
-            case 4:
-                return new Common();
-        }
 
-        return null;
-    }
 }
